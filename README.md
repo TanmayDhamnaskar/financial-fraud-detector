@@ -1,6 +1,6 @@
 # Financial Fraud Detection System
 
-👉 [Try the Live App](#)
+👉 **[Try the Live App](https://financial-fraud-detector.streamlit.app/)**
 
 This project presents a **complete end-to-end implementation** of a **financial fraud detection system** built using **Streamlit** and **XGBoost**. The objective is to accurately identify fraudulent transactions based on a range of **financial and behavioral attributes**, with a user-friendly **Streamlit** web app for real-time detection.
 
