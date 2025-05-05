@@ -30,12 +30,25 @@ st.markdown("""
 st.title("💳 Real-Time Fraud Detection App")
 st.markdown("---")
 
+# @st.cache_data(show_spinner=False)
+# def load_live_data():
+#     conn = sqlite3.connect("Database.db")
+#     df = pd.read_sql("SELECT * FROM Fraud_detection", conn)
+#     conn.close()
+#     return df.tail(1_000_000)
+
+# def prepare_input(df):
+#     return df.drop(columns=['isFraud'], errors='ignore')
+
+# # Initialize session state
+# if "data_loaded" not in st.session_state:
+#     st.session_state.data_loaded = False
+#     st.session_state.raw_df = None
+
 @st.cache_data(show_spinner=False)
 def load_live_data():
-    conn = sqlite3.connect("Database.db")
-    df = pd.read_sql("SELECT * FROM Fraud_detection", conn)
-    conn.close()
-    return df.tail(1_000_000)
+    df = pd.read_csv("fraud_sample.csv")
+    return df  # Already trimmed to 1M rows
 
 def prepare_input(df):
     return df.drop(columns=['isFraud'], errors='ignore')
