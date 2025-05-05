@@ -1,0 +1,11 @@
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# SQLite database file
+Database.db
+
+# Python cache
+__pycache__/
+
+# Virtual environment
+fraud_env/
