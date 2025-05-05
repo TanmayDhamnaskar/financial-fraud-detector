@@ -12,7 +12,8 @@ This project presents a **complete end-to-end implementation** of a **financial 
 - Custom **threshold tuning** to balance **precision** and **recall** for the fraud class.
 - Uses a fine-tuned **XGBoost model** optimized via **cross-validation**.
 - Ensures consistent preprocessing with a serialized **scikit-learn pipeline**.
-- Integrates with **SQLite** to fetch and process live transaction data.
+- **Uses SQLite** to fetch and process the `Fraud_detection` dataset for training and testing.
+- Trained on 4M records via **SQLite**; app uses `fraud_sample.csv` (1M rows) for fast testing.
 - Features an interactive **Streamlit UI** to process live data and download results.
 
 ## 🛠 Installation
@@ -42,7 +43,8 @@ streamlit run app.py
 financial-fraud-detector/
 │── app.py                                      # Streamlit frontend logic
 │── custom_transformers.py                      # Custom transformers for pipeline
-│── eda_analysis.ipynb                         # Statistical Analysis(EDA)
+│── eda_analysis.ipynb                          # Statistical Analysis(EDA)
+│── fraud_sample.csv                            # Last 1,000,000 records from Database.db
 │── model_pipeline.ipynb                        # Training, preprocessing, tuning
 │── model/
 │   ├── optimized_xgb_fraud_pipeline.pkl        # Trained XGBoost pipeline
@@ -81,12 +83,12 @@ financial-fraud-detector/
 ## 📑 Notes
 
 - Ensure the files `optimized_xgb_fraud_pipeline.pkl` and `optimal_threshold.pkl` are present in the `model/` directory before running the app.
-- The database file (`Database.db`) is not included in the repository; the app operates on pre-processed and batch data.
+- The original database file (`Database.db`) was used for full training and evaluation but is excluded due to size. The app uses `fraud_sample.csv` (last 1 million rows) for batch testing.
 - Outputs include both full predictions and filtered fraud cases, downloadable as CSV from the app.
 
 ## 📘 Alignment with Project Guidelines
 
-- ✅ **Data Source:** Used 6.3 million records from `Fraud_detection` table
+- ✅ **Data Source:** Used 6.3 million records from `Fraud_detection` table from `Database.db`
 - ✅ **Record Split:**
   - Training: 4,000,000
   - Validation: 1,000,000
